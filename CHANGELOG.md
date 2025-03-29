@@ -153,3 +153,21 @@ et ce projet adhère au [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ### Changed
 - Updated project structure with services directory
 - Improved error handling for API calls
+
+## [2.4.0] - 2024-03-29
+
+### Added
+- Intégration complète des métadonnées Icecast en temps réel
+- Service de métadonnées avec système de cache pour optimiser les performances
+- Hook personnalisé `useIcecastMetadata` pour la gestion des états
+- Affichage en direct du titre et de l'artiste du morceau en cours
+
+### Changed
+- Mise à jour de l'interface utilisateur pour afficher les métadonnées dynamiques
+- Optimisation des requêtes de métadonnées avec un intervalle de 5 secondes
+- Amélioration de la gestion des erreurs de récupération des métadonnées
+
+### Technical
+- Configuration du point d'accès Icecast pour les métadonnées : `/status-json.xsl`
+- Mise en place d'un système de cache pour éviter les requêtes excessives
+- Parsing intelligent des métadonnées avec séparation titre/artiste

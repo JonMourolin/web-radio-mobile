@@ -17,6 +17,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { Feather } from '@expo/vector-icons';
 import { useColorScheme } from '@/hooks/useColorScheme';
 import { ThemedView } from '@/components/ThemedView';
+import { useIcecastMetadata } from '@/hooks/useIcecastMetadata';
 
 // Theme colors
 const colors = {
@@ -57,6 +58,7 @@ export default function RadioScreen() {
   
   const colorScheme = useColorScheme();
   const theme = colorScheme === 'dark' ? colors.dark : colors.light;
+  const { metadata, error } = useIcecastMetadata(isPlaying);
 
   // Initialize audio
   useEffect(() => {
@@ -230,13 +232,13 @@ export default function RadioScreen() {
                 </Text>
               </View>
               <Text style={[styles.trackTitle, { color: theme.foreground }]}>
-                Web Radio Mixes
+                {metadata?.title || 'Web Radio Mixes'}
               </Text>
               <View style={styles.trackMetaContainer}>
                 <View style={styles.trackMetaItem}>
                   <Feather name="user" size={12} color={theme.primary} style={styles.trackMetaIcon} />
                   <Text style={[styles.trackMetaText, { color: theme.foreground }]}>
-                    Various Artists
+                    {metadata?.artist || 'Various Artists'}
                   </Text>
                 </View>
                 <View style={styles.trackMetaItem}>
